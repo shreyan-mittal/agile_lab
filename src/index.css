@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+  color: #e9ecf5;
+  background-color: #07090f;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Smooth scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    /* native smooth scroll — no JS needed, no rendering issues */
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #07090f;
+  /* remove overscroll bounce that fights with galaxy canvas */
+  overscroll-behavior: none;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #07090f; }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(to bottom, #3b82f6, #06b6d4);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #60a5fa, #22d3ee);
+}
+
+/* ── Text selection ── */
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #fff;
+}
+
+/* ── Noise overlay ── */
+.noise-overlay {
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  pointer-events: none;
+}
+
+/* ── Marquee / ticker ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.animate-marquee-left  { animation: marquee-left  30s linear infinite; }
+.animate-marquee-right { animation: marquee-right 30s linear infinite; }
+
+/* ── Shared keyframes ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+@keyframes border-slide {
+  0%   { background-position: 0%   50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ── Focus ring ── */
+*:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.7);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
